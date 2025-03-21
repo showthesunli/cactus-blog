@@ -1,1 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 500 500"><path fill="#B04304" d="M295.334 103.333v-40L340.667 90v40l-45.333-26.667ZM250.001 63.333l-45.334-26.666v426.666L250.001 490V63.333Z"/><path fill="#FF5D01" d="m250.001 129.944 45.333-26.667 45.333 26.667-45.333 26.667-45.333-26.667ZM204.667 36.667 250.001 10l45.333 26.667-45.333 26.666-45.334-26.666ZM295.334 63.277l45.333-26.666L386 63.277l-45.333 26.667-45.333-26.667ZM114 223.277l45.333-26.667 45.334 26.667-45.334 26.667L114 223.277ZM250 249.944l-45.333-26.667v53.333L250 249.944Z"/><path fill="#53C68C" d="m250 63.333 45.333-26.666v120L340.667 130V90L386 63.333V170l-90.667 53.333v240L250 490V316.667L159.333 370V250l45.334-26.667v53.334L250 250V63.333Z"/><path fill="#B04304" d="M159.333 250 114 223.334v120L159.333 370V250Z"/></svg>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景圆形 -->
+  <circle cx="100" cy="100" r="90" fill="#f8f9fa" stroke="#3498db" stroke-width="5"/>
+  <!-- 代码符号 </> -->
+  <path d="M70 80 L50 100 L70 120" fill="none" stroke="#2c3e50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M130 80 L150 100 L130 120" fill="none" stroke="#2c3e50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- 笔记/写作元素 -->
+  <rect x="85" y="70" width="30" height="60" rx="2" fill="#3498db" opacity="0.8"/>
+  <path d="M85 80 L115 80 M85 90 L115 90 M85 100 L105 100" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- 连接线，表示技术与写作的结合 -->
+  <path d="M70 130 C90 150, 110 150, 130 130" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round"/>
+</svg>
