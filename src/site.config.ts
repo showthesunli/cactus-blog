@@ -29,19 +29,19 @@ export const siteConfig: SiteConfig = {
 export const menuLinks: { path: string; title: string }[] = [
 	{
 		path: "/",
-		title: "Home",
+		title: "首页",  // 可以改成中文
 	},
 	{
 		path: "/about/",
-		title: "About",
+		title: "关于",  // 可以改成中文
 	},
 	{
 		path: "/posts/",
-		title: "Blog",
+		title: "博客",  // 可以改成中文
 	},
 	{
 		path: "/notes/",
-		title: "Notes",
+		title: "笔记",  // 可以改成中文
 	},
 ];
 
@@ -74,3 +74,4 @@ export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
 	themes: ["dracula", "github-light"],
 	useThemedScrollbars: false,
 };
+

@@ -2,51 +2,94 @@
 import Search from "@/components/Search.astro";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { menuLinks } from "@/site.config";
+
+const currentPath = Astro.url.pathname;
 ---
 
 <header class="group relative mb-28 flex items-center sm:ps-18" id="main-header">
 	<div class="flex sm:flex-col">
 		<a
-			aria-current={Astro.url.pathname === "/" ? "page" : false}
+			aria-current={currentPath === "/" ? "page" : false}
 			class="inline-flex items-center grayscale hover:filter-none sm:relative sm:inline-block"
 			href="/"
 		>
 			<svg
 				aria-hidden="true"
-				class="me-3 h-10 w-6 sm:absolute sm:-start-18 sm:me-0 sm:h-20 sm:w-12"
+				class="me-3 h-10 w-10 sm:absolute sm:-start-18 sm:me-0 sm:h-16 sm:w-16"
 				fill="none"
 				focusable="false"
-				viewBox="0 0 272 480"
+				viewBox="0 0 200 200"
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<title>Logo</title>
-				<path
-					d="M181.334 93.333v-40L226.667 80v40l-45.333-26.667ZM136.001 53.333 90.667 26.667v426.666L136.001 480V53.333Z"
-					fill="#B04304"></path>
-				<path
-					d="m136.001 119.944 45.333-26.667 45.333 26.667-45.333 26.667-45.333-26.667ZM90.667 26.667 136.001 0l45.333 26.667-45.333 26.666-45.334-26.666ZM181.334 53.277l45.333-26.666L272 53.277l-45.333 26.667-45.333-26.667ZM0 213.277l45.333-26.667 45.334 26.667-45.334 26.667L0 213.277ZM136 239.944l-45.333-26.667v53.333L136 239.944Z"
-					fill="#FF5D01"></path>
-				<path
-					d="m136 53.333 45.333-26.666v120L226.667 120V80L272 53.333V160l-90.667 53.333v240L136 480V306.667L45.334 360V240l45.333-26.667v53.334L136 240V53.333Z"
-					fill="#53C68C"></path>
-				<path d="M45.334 240 0 213.334v120L45.334 360V240Z" fill="#B04304"></path>
+				<!-- 背景圆形 - 使用 currentColor 和 Tailwind 类来控制颜色 -->
+				<circle 
+					cx="100" 
+					cy="100" 
+					r="90" 
+					class="fill-white dark:fill-[#2d2d2d]" 
+					stroke="currentColor" 
+					stroke-width="5"
+				/>
+				<!-- 代码符号 </> -->
+				<path 
+					d="M70 80 L50 100 L70 120" 
+					fill="none" 
+					class="stroke-[#2c3e50] dark:stroke-[#e1e1e1]" 
+					stroke-width="8" 
+					stroke-linecap="round" 
+					stroke-linejoin="round"
+				/>
+				<path 
+					d="M130 80 L150 100 L130 120" 
+					fill="none" 
+					class="stroke-[#2c3e50] dark:stroke-[#e1e1e1]" 
+					stroke-width="8" 
+					stroke-linecap="round" 
+					stroke-linejoin="round"
+				/>
+				<!-- 笔记/写作元素 -->
+				<rect 
+					x="85" 
+					y="70" 
+					width="30" 
+					height="60" 
+					rx="2" 
+					class="fill-[#3498db] dark:fill-[#61dafb] opacity-80"
+				/>
+				<path 
+					d="M85 80 L115 80 M85 90 L115 90 M85 100 L105 100" 
+					fill="none" 
+					class="stroke-white dark:stroke-[#1a1a1a]" 
+					stroke-width="2" 
+					stroke-linecap="round"
+				/>
+				<!-- 连接线 -->
+				<path 
+					d="M70 130 C90 150, 110 150, 130 130" 
+					fill="none" 
+					class="stroke-[#2c3e50] dark:stroke-[#e1e1e1]" 
+					stroke-width="3" 
+					stroke-linecap="round"
+				/>
 			</svg>
-			<span class="text-xl font-bold sm:text-2xl">Astro Cactus</span>
+			<span class="text-xl font-bold text-[#3498db] dark:text-[#61dafb] sm:text-2xl">大嘴碎碎念</span>
 		</a>
 		<nav
 			aria-label="Main menu"
-			class="bg-global-bg/85 text-accent sm:divide-accent absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md py-4 shadow backdrop-blur-sm group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:-ms-4 sm:mt-1 sm:flex sm:flex-row sm:items-center sm:divide-x sm:rounded-none sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
+			class="absolute -inset-x-4 top-14 hidden flex-col items-end gap-y-4 rounded-md bg-[--theme-menu-bg] py-4 text-accent shadow backdrop-blur group-[.menu-open]:z-50 group-[.menu-open]:flex sm:static sm:z-auto sm:mt-1 sm:flex sm:flex-row sm:items-center sm:gap-x-4 sm:bg-transparent sm:py-0 sm:shadow-none sm:backdrop-blur-none"
 			id="navigation-menu"
 		>
 			{
-				menuLinks.map((link) => (
+				menuLinks.map(({ path, title }) => (
 					<a
-						aria-current={Astro.url.pathname === link.path ? "page" : false}
-						class="px-4 py-4 underline-offset-2 hover:underline sm:py-0"
-						data-astro-prefetch
-						href={link.path}
+						aria-current={currentPath === path ? "page" : false}
+						class={`px-4 py-4 sm:py-0 sm:hover:underline ${
+							currentPath === path ? "text-accent-2" : "text-[#2ecc71] dark:text-[#98fb98]"
+						}`}
+						href={path}
 					>
-						{link.title}
+						{title}
 					</a>
 				))
 			}
@@ -115,3 +158,11 @@ import { menuLinks } from "@/site.config";
 
 	customElements.define("mobile-button", MobileNavBtn);
 </script>
+
+
+
+
+
+
+
+
