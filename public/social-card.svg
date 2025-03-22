@@ -1,0 +1,64 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="1200" height="630" fill="#f8f9fa"/>
+  <rect width="1200" height="630" fill="url(#gradient)" opacity="0.1"/>
+  
+  <!-- 渐变定义 -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3498db"/>
+      <stop offset="100%" stop-color="#2c3e50"/>
+    </linearGradient>
+    
+    <!-- 波浪图案 -->
+    <pattern id="wave" x="0" y="0" width="200" height="200" patternUnits="userSpaceOnUse">
+      <path d="M0,100 C40,80 60,120 100,100 C140,80 160,120 200,100" fill="none" stroke="#3498db" stroke-width="2" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- 装饰性波浪背景 -->
+  <rect width="1200" height="630" fill="url(#wave)"/>
+  
+  <!-- 左侧图标元素 -->
+  <g transform="translate(250, 315) scale(1.5)">
+    <!-- 背景圆形 -->
+    <circle cx="100" cy="100" r="90" fill="#f8f9fa" stroke="#3498db" stroke-width="5"/>
+    <!-- 代码符号 </> -->
+    <path d="M70 80 L50 100 L70 120" fill="none" stroke="#2c3e50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M130 80 L150 100 L130 120" fill="none" stroke="#2c3e50" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- 笔记/写作元素 -->
+    <rect x="85" y="70" width="30" height="60" rx="2" fill="#3498db" opacity="0.8"/>
+    <path d="M85 80 L115 80 M85 90 L115 90 M85 100 L105 100" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    <!-- 连接线，表示技术与写作的结合 -->
+    <path d="M70 130 C90 150, 110 150, 130 130" fill="none" stroke="#2c3e50" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  
+  <!-- 右侧文字区域 -->
+  <g transform="translate(600, 250)">
+    <text font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#2c3e50">技术博客</text>
+    <text y="80" font-family="Arial, sans-serif" font-size="32" fill="#3498db">编程 • 设计 • 思考</text>
+    
+    <!-- 装饰性下划线 -->
+    <path d="M0 100 L300 100" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- 社交媒体图标示意 -->
+    <g transform="translate(0, 150)">
+      <circle cx="25" cy="25" r="20" fill="#3498db"/>
+      <circle cx="85" cy="25" r="20" fill="#3498db"/>
+      <circle cx="145" cy="25" r="20" fill="#3498db"/>
+      
+      <!-- 简化的图标内部元素 -->
+      <path d="M25 15 L25 35" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <path d="M15 25 L35 25" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      
+      <path d="M75 25 L95 25" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      
+      <path d="M135 15 L155 35" stroke="white" stroke-width="3" stroke-linecap="round"/>
+      <path d="M135 35 L155 15" stroke="white" stroke-width="3" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- 底部装饰元素 -->
+  <path d="M0,530 C200,580 400,500 600,530 C800,560 1000,510 1200,530" fill="none" stroke="#3498db" stroke-width="3" opacity="0.5"/>
+  <path d="M0,550 C200,600 400,520 600,550 C800,580 1000,530 1200,550" fill="none" stroke="#2c3e50" stroke-width="2" opacity="0.3"/>
+</svg>
