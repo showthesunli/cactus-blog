@@ -1,9 +1,9 @@
 ---
 title: "用 ai 编程"
 description: "使用aider做完一个小项目之后的记录"
-publishDate: "2025-3-23"
-updatedDate: "2025-3-23"
-tags: ["ai"]
+publishDate: "2025-03-23"
+updatedDate: "2025-03-23"
+tags: ["ai", "aider", "llm", "programming", "developer tools", "workflow", "review"]
 ---
 
 也算是从零开始用ai写完了一个小项目，分享一下用ai编程的过程，脑子比较乱，就当水贴了。
