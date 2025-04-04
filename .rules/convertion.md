@@ -1,65 +1,65 @@
-# Project Conventions for LLM Assistants
+# LLM 助手项目规范
 
-This document outlines the key conventions and technologies used in the `astro-cactus` blog project. Please adhere to these guidelines when generating or modifying code.
+本文档概述了 `astro-cactus` 博客项目中使用的关键规范和技术。在生成或修改代码时，请遵守这些准则。
 
-## 1. Core Technologies
+## 1. 核心技术
 
-*   **Framework:** Astro (`.astro` files)
-*   **Language:** TypeScript (primarily in `.ts` files and within `<script>` tags in `.astro` files)
-*   **Content:** Markdown (`.md`) and MDX (`.mdx`)
+*   **Framework:** Astro (`.astro` 文件)
+*   **Language:** TypeScript (主要在 `.ts` 文件和 `.astro` 文件内的 `<script>` 标签中使用)
+*   **Content:** Markdown (`.md`) 和 MDX (`.mdx`)
 *   **Styling:** Tailwind CSS (utility-first)
 *   **Package Manager:** pnpm
 
-## 2. Formatting
+## 2. Formatting (格式化)
 
-*   **Primary Formatter (JS/TS/JSON):** Biome (`biome format`). Adhere strictly to Biome's formatting rules.
-*   **Secondary Formatter (Astro/Other):** Prettier (`prettier`). Ensure Astro files (`.astro`) and potentially other non-JS/TS/JSON files are formatted using Prettier.
-*   **Tailwind Class Sorting:** Prettier (via `prettier-plugin-tailwindcss`) should automatically sort Tailwind utility classes within templates. Ensure generated code maintains this sorting.
-*   **Import Sorting:** Biome handles import sorting (`biome check --formatter-enabled=false --write`). Ensure imports are organized according to Biome's rules.
-*   **Workflow:** Use the project scripts:
+*   **主要格式化工具 (JS/TS/JSON):** Biome (`biome format`)。严格遵守 Biome 的格式化规则。
+*   **次要格式化工具 (Astro/其他):** Prettier (`prettier`)。确保 Astro 文件 (`.astro`) 以及其他可能的非 JS/TS/JSON 文件使用 Prettier 进行格式化。
+*   **Tailwind Class 排序:** Prettier (通过 `prettier-plugin-tailwindcss`) 应自动对模板内的 Tailwind utility classes 进行排序。确保生成的代码保持此排序。
+*   **Import 排序:** Biome 处理 import 排序 (`biome check --formatter-enabled=false --write`)。确保 imports 按照 Biome 的规则进行组织。
+*   **工作流程:** 使用项目脚本：
     *   `pnpm run format:code` (Biome + Prettier)
-    *   `pnpm run format:imports` (Biome import sorting)
-    *   `pnpm run format` (Runs both)
+    *   `pnpm run format:imports` (Biome import 排序)
+    *   `pnpm run format` (运行两者)
 
-## 3. Linting
+## 3. Linting (代码检查)
 
-*   **Linter:** Biome (`biome lint`).
-*   **Requirement:** All code must pass Biome's linting checks without errors or warnings.
-*   **Workflow:** Use `pnpm run lint` to check for issues.
+*   **Linter:** Biome (`biome lint`)。
+*   **要求:** 所有代码必须通过 Biome 的 linting 检查，不得有错误或警告。
+*   **工作流程:** 使用 `pnpm run lint` 检查问题。
 
-## 4. Type Checking
+## 4. Type Checking (类型检查)
 
-*   **Checker:** Astro Check / TypeScript (`astro check`).
-*   **Requirement:** All TypeScript code must pass type checking. Avoid using `any` unless absolutely necessary and justified. Use specific types and interfaces. Use `@ts-expect-error` or `@ts-ignore` only as a last resort with a clear explanation.
-*   **Workflow:** Use `pnpm run check` to verify type safety.
+*   **Checker:** Astro Check / TypeScript (`astro check`)。
+*   **要求:** 所有 TypeScript 代码必须通过类型检查。避免使用 `any`，除非绝对必要且有充分理由。使用具体的 types 和 interfaces。仅在最后手段并附有明确解释的情况下使用 `@ts-expect-error` 或 `@ts-ignore`。
+*   **工作流程:** 使用 `pnpm run check` 验证类型安全。
 
-## 5. Styling (Tailwind CSS)
+## 5. Styling (样式 - Tailwind CSS)
 
-*   **Methodology:** Primarily use Tailwind utility classes directly within the HTML/Astro templates.
-*   **Custom CSS:** Avoid creating separate CSS files or using `@apply` unless essential for complex components or base styles not easily achievable with utilities.
-*   **Typography:** Leverage the `@tailwindcss/typography` plugin for styling Markdown/MDX content rendered via `prose` classes.
+*   **方法论:** 主要在 HTML/Astro 模板中直接使用 Tailwind utility classes。
+*   **自定义 CSS:** 避免创建单独的 CSS 文件或使用 `@apply`，除非对于复杂的组件或无法轻易通过 utilities 实现的基础样式是必需的。
+*   **Typography:** 利用 `@tailwindcss/typography` 插件为通过 `prose` classes 渲染的 Markdown/MDX 内容设置样式。
 
-## 6. Content (Markdown / MDX)
+## 6. Content (内容 - Markdown / MDX)
 
-*   **Metadata:** Use YAML frontmatter for post metadata (e.g., `title`, `publishDate`, `updatedDate`, `tags`).
-*   **Custom Syntax:** Be aware of potential custom Markdown/MDX features enabled by Remark/Rehype plugins (e.g., directives like admonitions, as seen in `remark-admonitions.ts`). Follow existing patterns for using these features.
+*   **Metadata:** 使用 YAML frontmatter 定义文章元数据 (例如 `title`, `publishDate`, `updatedDate`, `tags`)。
+*   **自定义语法:** 注意由 Remark/Rehype 插件启用的潜在自定义 Markdown/MDX 功能 (例如，像 `remark-admonitions.ts` 中看到的 admonitions 等 directives)。遵循现有模式使用这些功能。
 
-## 7. Components
+## 7. Components (组件)
 
-*   **Structure:** Use Astro components (`.astro`) for UI elements and page structure.
-*   **Props:** Define component props using TypeScript interfaces within the component's frontmatter script (`---`).
+*   **结构:** 使用 Astro components (`.astro`) 构建 UI 元素和页面结构。
+*   **Props:** 在组件的 frontmatter script (`---`) 中使用 TypeScript interfaces 定义组件 props。
 
-## 8. Icons
+## 8. Icons (图标)
 
-*   **Implementation:** Use the `astro-icon` component/package for rendering SVG icons. Follow its usage patterns.
+*   **实现:** 使用 `astro-icon` component/package 渲染 SVG 图标。遵循其使用模式。
 
-## 9. API Routes / Endpoints
+## 9. API Routes / Endpoints (API 路由 / 端点)
 
-*   **Implementation:** Use Astro's file-based routing for API endpoints (e.g., `.ts` files in the `src/pages/` directory, like `og-image/[...slug].png.ts`).
-*   **Data Fetching:** Follow Astro patterns for data fetching within API routes and `getStaticPaths`.
+*   **实现:** 使用 Astro 基于文件的路由定义 API endpoints (例如，`src/pages/` 目录中的 `.ts` 文件，如 `og-image/[...slug].png.ts`)。
+*   **Data Fetching:** 遵循 Astro 在 API routes 和 `getStaticPaths` 中进行数据获取的模式。
 
-## 10. General Guidelines
+## 10. 通用指南
 
-*   **Clarity:** Write clear, readable, and maintainable code.
-*   **Consistency:** Follow existing code patterns and conventions within the project.
-*   **Dependencies:** Use `pnpm` to manage dependencies.
+*   **清晰性:** 编写清晰、可读、可维护的代码。
+*   **一致性:** 遵循项目内现有的代码模式和规范。
+*   **Dependencies:** 使用 `pnpm` 管理依赖项。
