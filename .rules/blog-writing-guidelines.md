@@ -18,7 +18,7 @@
     *   `updatedDate`: (Date, e.g., `YYYY-MM-DD`) 文章更新日期 (可选)。
     *   `tags`: (string[]) 文章标签数组 (例如 `["Astro", "指南"]`)。标签会自动处理为小写并去重。
     *   `description`: (string) 文章简短描述，用于 SEO 和预览。
-    *   `ogImage`: (string) 自定义社交媒体预览图 URL (可选)。若省略，系统可能会自动生成。
+    *   `ogImage`: (string) 自定义社交媒体预览图 URL (可选)。**若省略此字段，系统将根据文章标题和日期（优先使用 `updatedDate`，其次是 `publishDate`）自动生成一个预览图。**
 *   **自动添加字段 (无需手动添加):**
     *   `readingTime`: (string) 文章阅读时长，由 `remark-reading-time` 插件自动计算。
 *   **示例:**
@@ -73,6 +73,10 @@
 *   **语法:** 使用标准的 Markdown 语法。
 *   **外部链接:** 自动添加 `target="_blank"` 和 `rel="noopener noreferrer"`。
 *   **图片:** 可能会被 `rehype-unwrap-images` 处理，避免被 `<p>` 标签包裹。
+*   **图片存放:** 推荐将文章中使用的图片文件存放在项目根目录下的 `public/` 文件夹内（例如 `public/images/`）。在 Markdown 中引用这些图片时，请使用相对于根目录的路径，例如：
+    ```markdown
+    ![图片描述](/images/your-image-name.png)
+    ```
 
 ## 6. 代码检查与格式化
 
