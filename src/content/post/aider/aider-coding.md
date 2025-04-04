@@ -1,6 +1,6 @@
 ---
 title: "用 ai 编程"
-description: "使用aider做完一个小项目之后的记录"
+description: "AI 编程助手 Aider 实战评测：分享使用 Aider 和 Claude 3.7 完成项目的经验，对比 Cursor/Cline，探讨 AI 辅助开发流程与心得。"
 publishDate: "2025-03-23"
 updatedDate: "2025-03-23"
 tags: ["ai", "aider", "llm", "programming", "developer tools", "workflow", "review"]
