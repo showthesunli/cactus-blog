@@ -33,13 +33,13 @@
 
 *   **格式:** 每篇文章开头必须包含 YAML frontmatter 块 (`--- ... ---`)。
 *   **必需字段:**
-    *   `title`: (string) 文章标题。
+    *   `title`: (string) 文章标题。**SEO 关键:** 这是页面的 `<title>` 标签和社交媒体分享时的主要标题，应包含核心关键词并具有吸引力。
     *   `publishDate`: (Date, e.g., `YYYY-MM-DD`) 文章发布日期。
         *   *注意:* 日期格式可以更灵活，例如 `"DD MMMM YYYY"` (如 `"27 January 2023"`) 或完整的 ISO 字符串 (`"YYYY-MM-DDTHH:mm:ssZ"`)，但建议在项目中保持一致。
 *   **常用字段:**
-    *   `updatedDate`: (Date, e.g., `YYYY-MM-DD` or `"DD MMMM YYYY"`) 文章更新日期 (可选)。
-    *   `tags`: (string[]) 文章标签数组 (例如 `["Astro", "指南"]`)。标签会自动处理为小写并去重。
-    *   `description`: (string) 文章简短描述，用于 SEO 和预览。
+    *   `updatedDate`: (Date, e.g., `YYYY-MM-DD` or `"DD MMMM YYYY"`) 文章更新日期 (可选)。搜索引擎可能会关注内容的更新时间。
+    *   `tags`: (string[]) 文章标签数组 (例如 `["Astro", "指南"]`)。标签会自动处理为小写并去重。有助于站内内容组织和发现，间接影响用户体验和 SEO。
+    *   `description`: (string) 文章简短描述。**SEO 关键:** 这通常用作搜索引擎结果页面 (SERP) 上的 meta description，应准确概括文章内容并包含关键词，吸引用户点击。
     *   `draft`: (boolean) 如果设置为 `true`，则该文章通常只在开发环境中可见 (可选)。
     *   `coverImage`: (object) 用于文章顶部的封面/英雄图片 (可选)。包含以下属性：
         *   `src`: (string) 图片路径，通常是相对于当前 Markdown 文件的相对路径 (例如 `./cover.png`)。
