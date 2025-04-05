@@ -336,3 +336,11 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred: {e}")
 
 ```
+
+## 2/27 更新
+
+* 本地记录日志
+* 并发写文件
+* 并发控制
+* 参数提示
+* python ./crawler.py -h
