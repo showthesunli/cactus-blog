@@ -1,6 +1,6 @@
 ---
 title: "介绍一个纯前端 GIF 录制工具：GifCapture.com"
-publishDate: 2025-04-06
+publishDate: 2025-03-13
 tags: ["工具", "前端", "GIF", "Web开发", "AI编程"]
 description: "介绍一个无需安装、即用即走的纯前端 GIF 录制网站 GifCapture.com，支持屏幕捕捉、自定义裁剪、尺寸和 FPS，并分享了使用 AI 编程的实践体会。"
 ---
