@@ -4,9 +4,30 @@
 
 ## 1. 文件格式
 
-*   **选择:** 使用 Markdown (`.md`) 或 MDX (`.mdx`)。
-*   **何时使用 `.mdx`:** 当你需要在文章中嵌入自定义 Astro/React/Vue 组件或使用 JSX 语法时。
-*   **存放位置:** 通常在 `src/content/post/` 目录下。
+*   **1. 选择:** 使用 Markdown (`.md`) 或 MDX (`.mdx`)。
+*   **2. 何时使用 `.mdx`:** 当你需要在文章中嵌入自定义 Astro/React/Vue 组件或使用 JSX 语法时。
+*   **3. 存放位置:** 通常在 `src/content/post/` 目录下。
+*   **4. 文件名 (URL Slug) 规范 (SEO 建议):**
+    *   **重要性:** 文件名将直接影响生成的博客文章 URL (slug)，这对 SEO 至关重要。一个好的 URL slug 应该是简洁、描述性强且易于理解的。
+    *   **使用描述性关键词:** 文件名应包含与文章内容相关的核心关键词。
+    *   **保持简洁:** 避免过长或包含不必要词语（如 "a", "the", "in" 等，除非它们对理解至关重要）的文件名。
+    *   **小写字母:** 统一使用小写英文字母或标准汉语拼音。
+    *   **连字符分隔:** 使用连字符 (`-`) 分隔单词或拼音音节。**绝对不要**使用空格、下划线 (`_`) 或其他特殊字符。
+    *   **语言选择:**
+        *   推荐使用有意义的英文单词组合。
+        *   如果目标读者主要是中文用户，也可以使用清晰、标准的汉语拼音。
+        *   保持项目内风格统一。
+    *   **避免日期:** 通常不在文件名中包含日期，`publishDate` 和 `updatedDate` frontmatter 字段负责处理日期信息。
+    *   **示例:**
+        *   **推荐:**
+            *   `astro-optimization-tips.md` (英文)
+            *   `ruhe-zhuanxie-astro-boke.md` (拼音)
+            *   `crawl4ai-python-script.md`
+        *   **不推荐:**
+            *   `Blog Post Draft v2.md` (包含空格和大写字母)
+            *   `文章1.md` (非描述性)
+            *   `how_to_write_Astro_Blog_0405.md` (包含下划线、大写字母和日期)
+            *   `guanyuwomen.md` (拼音不清晰，应为 `guan-yu-wo-men.md` 或 `about-us.md`)
 
 ## 2. Frontmatter (元数据)
 
