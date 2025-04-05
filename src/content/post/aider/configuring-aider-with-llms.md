@@ -1,6 +1,6 @@
 ---
 title: "配置 Aider 连接 LLM：模型选择与编辑模式详解"
-publishDate: 2024-07-27 # 请将此日期修改为实际发布日期
+publishDate: 2025-03-14 # 请将此日期修改为实际发布日期
 tags: ["aider", "llm", "ai编程", "配置", "教程"]
 description: "本文介绍如何配置 Aider 工具连接不同的 LLM 服务，包括模型选择、编辑模式以及提供详细的配置示例。"
 draft: false
