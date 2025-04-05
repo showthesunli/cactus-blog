@@ -1,6 +1,7 @@
 ---
 title: "分享一个爬取文档站点生成 LLM 知识库语料的 Python 脚本"
 publishDate: 2025-04-05
+updatedDate: 2025-02-27 # 根据更新内容添加
 tags: ["Python", "Web Scraping", "LLM", "Knowledge Base", "Script", "crawl4ai", "教程"]
 description: "介绍并分享一个使用 crawl4ai 库编写的 Python 脚本，用于爬取文档型网站，生成 Markdown 文件，方便构建 LLM 知识库语料。"
 ---
@@ -36,33 +37,56 @@ description: "介绍并分享一个使用 crawl4ai 库编写的 Python 脚本，
 
 这个脚本使用了 `crawl4ai` 库，可以处理需要 JavaScript 渲染（客户端渲染）的站点。
 
-## 已知的问题
+### 主要功能与改进
 
-这个脚本还非常初级，存在一些已知问题：
+*   **并发爬取:** 使用 `asyncio` 和信号量 (`Semaphore`) 控制并发爬取任务数量 (`--max-concurrent`)。
+*   **并发写入:** 使用 `aiofiles` 库进行异步文件写入，提高效率。
+*   **日志记录:** 将详细的运行日志记录到 `crawler.log` 文件中，方便排查问题。
+*   **参数化:** 支持通过命令行参数配置种子 URL、输出目录、最大并发数、重试次数和最小内容字数阈值。
+*   **帮助信息:** 提供 `-h` 或 `--help` 参数显示使用说明。
 
-*   **没有做并发限制:** 脚本会尝试并发抓取所有提取到的链接。因为目标通常是静态文档站，而且内部链接数量可能不会特别巨大，所以暂时没加限制。但使用时还请注意，避免给目标服务器带来过大压力。:rofl::rofl::rofl:
-*   **文件写入并发:** 保存 Markdown 文件时，没有使用类似 `aiofiles` 这样的库来优化并发写入性能。
-*   **测试有限:** 我只用这个脚本抓取了两个站点进行了简单测试。在我的测试中，客户端使用 `cherry`，问答模型使用 `r1`，嵌入模型使用 `bge-m3`，效果还不错。不知道 @kangfenmao 大佬未来是否考虑给 `cherry` 加上 rerank 功能？:rofl:
+## 注意事项与局限性
+
+虽然进行了一些改进，但脚本仍有一些需要注意的地方：
+
+*   **并发控制:** 虽然加入了并发限制，但默认值 (`--max-concurrent=10`) 可能仍需根据目标网站的承受能力和你的网络环境进行调整。请**负责任地使用**，避免给目标服务器带来过大压力。
+:::caution[请勿滥用]
+过度频繁或高并发地爬取可能会对目标网站造成负担，甚至可能导致你的 IP 被封禁。请根据实际情况调整并发数，并尊重网站的 `robots.txt` (虽然本脚本目前未检查)。
+:::
+*   **错误处理:** 脚本包含基本的错误处理和重试机制，但可能无法覆盖所有异常情况。
+*   **内容提取:** 依赖 `crawl4ai` 的 Markdown 提取能力，对于结构特别复杂的页面，提取效果可能不完美。
+*   **测试有限:** 脚本主要在几个文档站点上进行了测试。在我的测试中，结合 `cherry` 知识库工具（使用 `r1` 问答模型和 `bge-m3` 嵌入模型），效果尚可。
 
 ## 使用说明
 
 1.  **安装依赖:** 脚本基于 [crawl4ai](https://crawl4ai.com/mkdocs/) 库，使用前请确保已安装该库及其依赖：
     ```bash
-    pip install crawl4ai
+    pip install crawl4ai aiofiles
     # 可能还需要安装 playwright 的浏览器驱动
     playwright install --with-deps
     ```
-    (这个库功能很强大，推荐有兴趣的同学深入研究 :rofl:)
-2.  **脚本不完善:** 这个脚本非常不完善，主要是为了抛砖引玉，分享一个思路，请轻喷 :rofl:。
+    :::tip[关于 crawl4ai]
+    `crawl4ai` 是一个功能强大的库，专门用于爬取网页并提取内容，特别适合 AI 应用场景。推荐有兴趣的同学深入研究其[官方文档](https://crawl4ai.com/mkdocs/)。
+    :::
+2.  **获取脚本:** 将下面的 Python 代码保存到一个文件（例如 `scrape_docs.py`）。
 3.  **运行脚本:**
-    *   将下面的 Python 代码保存到一个文件（例如 `scrape_docs.py`）。
-    *   通过命令行运行脚本，需要提供两个参数：种子 URL 和输出目录。
-    *   **重要:** 输出目录名**必须**以 `_docs` 结尾。
-    *   示例命令：
+    *   打开终端或命令行界面。
+    *   使用 `python` 命令运行脚本，并提供必要的参数。
+    *   **必需参数:**
+        *   `url`: 种子 URL (例如，文档首页 `https://docs.example.com/`)。
+        *   `output`: 输出目录路径。**重要:** 目录名**必须**以 `_docs` 结尾 (例如 `/path/to/your/output_docs`)。
+    *   **可选参数:**
+        *   `--max-concurrent`: 最大并发爬取任务数 (默认: 10)。
+        *   `--retry-count`: 初始链接提取失败时的重试次数 (默认: 3)。
+        *   `--min-word-count`: 提取页面 Markdown 内容的最小字数阈值 (默认: 100)。低于此字数的页面将被跳过。
+    *   **查看帮助:**
         ```bash
-        python scrape_docs.py https://docs.example.com/ /path/to/your/output_docs
+        python scrape_docs.py -h
         ```
-    *   可以调整 `--max-concurrent` (最大并发数，默认 10) 和 `--retry-count` (失败重试次数，默认 3) 参数。
+    *   **示例命令:**
+        ```bash
+        python scrape_docs.py https://docs.example.com/ /path/to/output_docs --max-concurrent 5 --min-word-count 50
+        ```
 
 ```python
 import asyncio
@@ -336,11 +360,3 @@ if __name__ == "__main__":
         print(f"An unexpected error occurred: {e}")
 
 ```
-
-## 2/27 更新
-
-* 本地记录日志
-* 并发写文件
-* 并发控制
-* 参数提示
-* python ./crawler.py -h
