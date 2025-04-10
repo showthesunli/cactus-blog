@@ -38,7 +38,11 @@
         *   *注意:* 日期格式可以更灵活，例如 `"DD MMMM YYYY"` (如 `"27 January 2023"`) 或完整的 ISO 字符串 (`"YYYY-MM-DDTHH:mm:ssZ"`)，但建议在项目中保持一致。
 *   **常用字段:**
     *   `updatedDate`: (Date, e.g., `YYYY-MM-DD` or `"DD MMMM YYYY"`) 文章更新日期 (可选)。搜索引擎可能会关注内容的更新时间。
-    *   `tags`: (string[]) 文章标签数组 (例如 `["Astro", "指南"]`)。标签会自动处理为小写并去重。有助于站内内容组织和发现，间接影响用户体验和 SEO。
+    *   `tags`: (string[]) 文章标签数组。
+        *   **规则:** **所有标签必须使用英文**。标签会被用作 URL 的一部分 (例如 `/tags/your-tag/`)，使用英文有利于 SEO 和 URL 的规范性。
+        *   **示例:** `["Astro", "Guide", "Tutorial"]`
+        *   **处理:** 标签会自动处理为小写并去重。
+        *   **作用:** 有助于站内内容组织和发现，间接影响用户体验和 SEO。
     *   `description`: (string) 文章简短描述。**SEO 关键:** 这通常用作搜索引擎结果页面 (SERP) 上的 meta description，应准确概括文章内容并包含关键词，吸引用户点击。
     *   `draft`: (boolean) 如果设置为 `true`，则该文章通常只在开发环境中可见 (可选)。
     *   `coverImage`: (object) 用于文章顶部的封面/英雄图片 (可选)。包含以下属性：
@@ -50,10 +54,10 @@
 *   **示例:**
     ```yaml
     ---
-    title: "如何撰写 Astro Cactus 博客"
+    title: "How to Write Astro Cactus Blog Posts"
     publishDate: 2024-04-04
-    tags: ["Astro", "规范", "教程"]
-    description: "遵循项目规范撰写博客文章的指南。"
+    tags: ["Astro", "Guidelines", "Tutorial"]
+    description: "A guide to writing blog posts following project conventions."
     ---
     ```
 
