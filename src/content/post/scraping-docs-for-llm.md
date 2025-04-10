@@ -2,7 +2,7 @@
 title: "一个爬取文档站点生成 LLM 知识库语料的 Python 脚本"
 publishDate: 2025-04-05
 updatedDate: "2025-02-12" # 根据更新内容添加，并确保是字符串
-tags: ["Python", "Web Scraping", "LLM", "Knowledge Base", "Script", "crawl4ai", "教程"]
+tags: ["Python", "Web Scraping", "LLM", "Knowledge Base", "Script", "crawl4ai", "Tutorial"]
 description: "介绍并分享一个使用 crawl4ai 库编写的 Python 脚本，用于爬取文档型网站，生成 Markdown 文件，方便构建 LLM 知识库语料。"
 ---
 

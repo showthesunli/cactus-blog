@@ -1,7 +1,7 @@
 ---
 title: "介绍 Telegram Logger：一个强大的 Telegram 消息记录与管理工具"
 publishDate: 2025-04-06
-tags: ["Python", "Telegram", "开源项目", "工具", "消息记录"]
+tags: ["Python", "Telegram", "Open Source", "Tools", "Message Logging"]
 description: "详细介绍 telegram-logger 项目，一个用于记录、管理和自动处理 Telegram 消息的 Python 工具，包括其主要功能、安装部署方法和配置选项。"
 ---
 
