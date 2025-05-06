@@ -1,7 +1,7 @@
 ---
-title: "Vibecoding 开发：AI 与 LLM 辅助编程经验分享（暂定）" # 你可以稍后优化标题
+title: "AI 编程实践：LLM 与 Memory Bank 提升项目可控性 (Vibecoding 经验)"
 publishDate: 2024-05-16 # 请改为实际开始写作或计划发布的日期
-tags: ["Vibecoding", "AI Programming", "LLM", "Development", "Experience"] # 初步标签，后续可调整
+tags: ["AI Programming", "LLM", "Memory Bank", "Project Controllability", "Aider", "Development Workflow", "Vibecoding"]
 description: "记录使用 AI 编程方法和 LLM 辅助开发 Vibecoding 项目的过程、选择与心得体会。" # 初步描述
 draft: true # 标记为草稿
 ---
