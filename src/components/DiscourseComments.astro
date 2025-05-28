@@ -1,0 +1,40 @@
+---
+// src/components/DiscourseComments.astro
+export interface Props {
+  discourseUrl: string;
+  discourseEmbedUrl: string;
+  discourseUsername?: string;
+}
+
+const { discourseUrl, discourseEmbedUrl, discourseUsername } = Astro.props;
+---
+
+<div id="discourse-comments-container" class="prose prose-sm sm:prose-base dark:prose-invert max-w-none mt-12">
+  <div id="discourse-comments"></div>
+  {discourseUsername && <meta name="discourse-username" content={discourseUsername} />}
+
+  <script define:vars={{ discourseUrl, discourseEmbedUrl }} type="text/javascript">
+    // 确保 DiscourseEmbed 在全局作用域中定义
+    // discourseUrl 和 discourseEmbedUrl 由 Astro 的 define:vars 传入
+    globalThis.DiscourseEmbed = {
+      discourseUrl: discourseUrl,
+      discourseEmbedUrl: discourseEmbedUrl, // 这将是当前页面的 URL
+      // className: 'CLASS_NAME', // 如果需要，可以取消注释并设置
+    };
+
+    (function() {
+      var d = document.createElement('script');
+      d.type = 'text/javascript';
+      d.async = true;
+      d.src = globalThis.DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+      var container = document.getElementById('discourse-comments-container');
+      if (container) {
+        // 将脚本附加到特定容器的末尾
+        container.appendChild(d);
+      } else {
+        // 如果由于某种原因找不到容器，则回退
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+      }
+    })();
+  </script>
+</div>
