@@ -3,7 +3,7 @@ title: "测试评论功能的博客文章"
 publishDate: 2025-05-28
 tags: ["Test", "Discourse", "Comments"]
 description: "这是一篇用于测试 Discourse 评论功能的博客文章。"
-draft: false
+draft: true
 ---
 
 这是一篇测试博客文章。
